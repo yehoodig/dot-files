@@ -1,0 +1,104 @@
+" VUNDLE SETUP add custom options below.
+set nocompatible              " be iMproved, required for Vundle
+filetype off                  " required for Vundle
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+" My Plugins
+Plugin 'tomvanderlee/vim-kerboscript'
+Plugin 'vimwiki/vimwiki'
+Plugin 'scrooloose/nerdtree'
+Plugin 'itchyny/calendar.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+"
+" plugin on GitHub repo
+"Plugin 'tpope/vim-fugitive'
+"
+" plugin from http://vim-scripts.org/vim/scripts.html
+"Plugin 'L9'
+"
+" Git plugin not hosted on GitHub
+"Plugin 'git://git.wincent.com/command-t.git'
+"
+" git repos on your local machine (i.e. when working on your own plugin)
+"Plugin 'file:///home/gmarik/path/to/plugin'
+"
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+"
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+"Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" All of your Plugins MUST be added before the following line
+call vundle#end()            " required for Vundle
+filetype plugin indent on    " required for Vundle
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+colorscheme desert
+
+"Number lines
+set number 
+set relativenumber
+
+"Tabs to spaces and default indenting depth"
+set shiftwidth=3
+set expandtab
+set tabstop=3
+
+"The following sets the line/block behavior of the cursor.  Works in MinTTY
+"let sets a variable.
+"& returns the variable that holds an option.
+"t_ options deal with how the terminal behaves and events.
+"
+"These are xterm control sequences.  See the following for more information: http://invisible-island.net/xterm/ctlseqs/ctlseqs.html
+"Basic format is: [Control Sequence Introducer][Parameter][Ending Sequence] 
+"In this case:
+"CSI is \e[ 
+"parameter is a single digit
+"and
+"ending sequence is <space>q
+"
+"t_SI is start insert mode
+"t_EI is end insert or replace mode
+"t_SR is start replace mode
+"
+"[parameter] -> [behavior]
+"0  -> blinking block.
+"1  -> blinking block (default).
+"2  -> steady block.
+"3  -> blinking underline.
+"4  -> steady underline.
+"5  -> blinking bar (xterm).
+"6  -> steady bar (xterm).
+
+let &t_SI = "\e[5 q"
+let &t_SR = "\e[3 q"
+let &t_EI = "\e[1 q"
+
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeQuitOnOpen=1
+
+"Highlight search patterns in the buffer
+set hlsearch
+"When in normal mode, clear the highlight with enter
+nnoremap <CR> :noh<CR><CR>
