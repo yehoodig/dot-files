@@ -1,0 +1,7 @@
+[user]
+	name = James McConnel
+	email = yehoodig@gmail.com
+[push]
+	default = simple
+[core]
+	editor = vim
