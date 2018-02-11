@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/james/.vim/bundle/Vundle.vim'
+let g:netrw_dirhist_2='/mnt/d/GalaxyClient/Games/Kerbal Space Program/Ships/Script'
+let g:netrw_dirhist_3='/mnt/d/GalaxyClient/Games/Kerbal Space Program/Ships/Script/ships'
+let g:netrw_dirhist_4='/mnt/d/GalaxyClient/Games/Kerbal Space Program/Ships/Script/ships/Upgoer 3'
