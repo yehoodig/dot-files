@@ -1,0 +1,23 @@
+#!/bin/bash
+cuebin () {
+	 umount /dev/cdrom
+	 mkdir $1
+	 cd $1
+	 cdrdao read-cd --datafile $1.bin --driver generic-mmc:0x20000 --device /dev/cdrom --read-raw $1.toc
+	 toc2cue $1.toc $1.cue
+	 cd ..
+}
+if [[ "$1" == "--cue-bin" ]]; then
+	 shift
+	 cuebin $@
+elif [ ! -z "$(isoinfo -d -i /dev/cdrom | grep 'NO Joliet present')" ]; then
+	 cuebin $@
+else
+	 count="$(isoinfo -d -i /dev/cdrom | grep 'Volume size' | grep -o '[0-9]*')"
+	 size="$(isoinfo -d -i /dev/cdrom | grep 'block size' | grep -o '[0-9]*')" 
+	 echo "Block count: $count"
+	 echo "Block size: $size"
+	 total=$((count*size/(1024*1024)))
+	 echo "Image will be ${total} Mib"
+	 dd if=/dev/cdrom bs=$size count=$count of=$1.iso status=progress
+fi

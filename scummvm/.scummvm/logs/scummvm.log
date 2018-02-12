@@ -1,0 +1,5 @@
+[2018-01-03 20:56:18] ScummVM 1.7.0 (Mar 29 2016 03:04:41)
+[2018-01-03 20:56:18] Vorbis FLAC MP3 ALSA SEQ TiMidity RGB zLib MPEG2 FluidSynth Theora AAC JPEG PNG 
+[2018-01-03 20:56:18] --- Log opened.
+[2018-01-03 20:56:18] WARNING: SDL mixer output buffer size: 2048 differs from desired: 4096!
+[2018-01-03 20:56:21] --- Log closed successfully.

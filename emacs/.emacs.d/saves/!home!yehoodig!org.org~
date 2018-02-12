@@ -1,0 +1,70 @@
+* TODO
+- [-] Rip Game CDs
+  - [X] write script to do this
+  - [X] Full Throttle 
+  - [X] The Dig
+  - [X] Infocom
+	 - [X] Zork Anthology
+	 - [X] Scifi collection
+	 - [X] Mystery collection
+	 - [X] Return to Zork
+  - [ ] 
+- [X] learn about todos in org-mode
+- [ ] take the dogs for a walk
+- [ ] clean up the house
+- [ ] Sort archive of software (~/lib)
+  - [ ] Purge unnessary stuff (over complicated hierarchies, etc. Just need backups of the media, and any accessories and manuals and stuff no need for a 3 deep directory tree.)
+* Raspberry Pi
+-Decide between sharing from main account or dummy.
+--Figure out how to make accounts on the machine.
+* Games
+** MIDI Music
+*** What is MIDI
+MIDI is a standard for transmitting information about music.  The standard has 16 channels.  .mid files first tell the player what instruments to assign to each MIDI channel, and then give a channel, and a note and duration to be played on that channel.  The sound each instrument produces is defined by patches, either in the rom of a synth box, like the MT-32, SC-55 or as a soundfont. 
+**** MT-32
+The MT-32 kinda sorta predates MIDI.  It will only accept messages on channels 2-9.  For "General MIDI" applications you would need an SC-55 or later, or a software solution.
+*** Linux
+- First, install pmidi
+  - pmidi -l lists installed midi devices
+  - Easiest way:
+	 - qtsynth :: a gui for fluidsynth (a synth that takes soundfonts)
+  - Hard way: install timidity++ 
+** launchy script
+There are several systems that games (or for that matter old software) run through.  I would like a fairly robust system that is agnostic to these things so that I don't have to remember specific commands.
+- [X] dos
+  - [X] List availiable commands
+- [ ] wine
+  - [ ] List availiable commands
+- [ ] native
+  - [ ] List availiable commands
+** Game Specific info
+*** Kings Quest VI
+	 - VGA320.DRV is bad, video stutters in cutscenes
+		- Fix: Do the large install and take the VGA320.DRV from the GabrielKnight1Demo(GKDEMO).zip file
+** Creating a CD image ISO images will generally be fine.  However, there are cases where they won't be. - Mixed Mode CDs (With audio tracks) - Some CDs have multiple filesystems living side by side.  This can confuse the utilities, so in such a case, you may need to rip the CD as a CUE/BIN *** ISO Images
+	 1. use isoinfo -d -i /dev/cdrom to determine blocksize and count  
+	 2. dd if=/dev/:cdrom bs=blocksize count=count of=/name/of/iso.iso
+
+	 This is not what you need to do to get an image of a mixed mode cd, for that, use cdrdao. 
+	 I guess the mounted dev is just one item in the device.
+*** CUE/BIN (Mixed Mode CD's)
+	Create an image using cdrdao with driver option specified and then convert toc file usiong toc2cue
+		1. If the cd was automounted when inserted, you need to unmount it with:
+			- umount /dev/cdrom
+	   2. Rip with cdrdao using the following command (driver option is important!): [fn:1]
+			- linux :: cdrdao read-cd --datafile image.bin --driver generic-mmc:0x20000 --device /dev/cdrom --read-raw image.toc
+         - Mac :: cdrdao read-cd --datafile image.bin --driver generic-mmc:0x20000 --device IODVDServices/0 --read-raw image.toc
+	   3. toc2cue image.toc image.cue
+	Properties of the image
+	⁃ Mountable in DOSBox
+
+
+[fn:1] These cue/bin images CANNOT be mounted by VirtualBox, and VirtualCD-RW will only show the audio tracks.
+** DOSBox Specific info
+- DOSBox can use compressed CUE/BIN images if the audio tracks are in OGG format (Will not work with mp3)
+  1. Rip the bin to ISO/WAVs
+  2. Compress the tracks to ogg format
+  3. Modify the cue file
+* Shell commands to remember
+- efibootmgr :: edit the boot order for UEFI
+- timedatectl :: manages how the hardware clock is handled.  Use "timedatectl set-local-rtc 1" to syncronize with Windows on a dual boot system.
