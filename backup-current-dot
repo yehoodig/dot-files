@@ -1,0 +1,12 @@
+#!/bin/bash
+#apparently this adds dotfiles to the globbing
+shopt -s dotglob
+if [ "$1" ]; then
+	for f in $1/* 
+	do
+		if [ ! -h $HOME/$(basename $f) ]; then
+			mv $HOME/$(basename $f)  $HOME/$(basename $f).bak
+		fi
+	done
+fi
+shopt -u dotglob
