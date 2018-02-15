@@ -1,3 +1,4 @@
+# Opens the chrome os firewall to allow game streaming by Steam on desktop
 alias steamStream='
 sudo iptables -A INPUT -p udp --dport 27036 -j ACCEPT; 
 sudo iptables -A INPUT -p udp --dport 37804 -j ACCEPT; 
