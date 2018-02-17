@@ -1,5 +1,0 @@
-#!/bin/bash
-export WINEPREFIX=~/.wine 
-cd "$(winepath "C:\GOG Games\RollerCoaster Tycoon Deluxe")"
-wine RCT.exe
-

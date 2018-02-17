@@ -1,0 +1,6 @@
+vim/.vim/bundle/*
+emacs/.emacs.d/saves/*
+emacs/.emacs.d/evil/*
+emacs/.emacs.d/auto-save-list/*
+emacs/.emacs.d/elpa/*
+local/
