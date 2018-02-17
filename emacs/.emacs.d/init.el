@@ -37,6 +37,9 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;     Custom Evil keybindings       ;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (define-key evil-motion-state-map (kbd "C-j") 'next-buffer)
+  (define-key evil-motion-state-map (kbd "C-k") 'previous-buffer)
+  (add-hook 'buffer-menu-mode-hook '(local-unset-key (kbd "C-k")))
   (define-key evil-normal-state-map (kbd "C-j") 'next-buffer)
   (define-key evil-normal-state-map (kbd "C-k") 'previous-buffer)
   (define-key evil-normal-state-map (kbd "C-;") 'term-toggle))
