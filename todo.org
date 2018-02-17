@@ -1,1 +1,2 @@
-TODO move scripts to their own repository
+
+* DONE move scripts to their own repository

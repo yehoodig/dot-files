@@ -39,7 +39,10 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   (define-key evil-motion-state-map (kbd "C-j") 'next-buffer)
   (define-key evil-motion-state-map (kbd "C-k") 'previous-buffer)
-  (add-hook 'buffer-menu-mode-hook '(local-unset-key (kbd "C-k")))
+  
+  ;; Fixes the above navigation, so that the cyle doesn't stick in the buffer menu
+  (define-key Buffer-menu-mode-map (kbd "C-k") 'previous-buffer)
+
   (define-key evil-normal-state-map (kbd "C-j") 'next-buffer)
   (define-key evil-normal-state-map (kbd "C-k") 'previous-buffer)
   (define-key evil-normal-state-map (kbd "C-;") 'term-toggle))
