@@ -1,425 +1,3 @@
-g++ cpptest.cpp -std=c++11 -lkrpc -lprotobuf
-ls -la /usr/local/lib/
-ls -la /usr/local/
-ls -la /usr/local/include
-ls -la /usr/local/include/krpc
-ls -la /usr/local/include/krpc/services
-vim cpptest.cpp
-ls -la /usr/local/include/google
-ls -la /usr/local/include/google/protobuf
-vim cpptest.cpp
-g++ cpptest.cpp -std=c++11 -lkrpc -lprotobuf
-vim cpptest.cpp
-g++ cpptest.cpp -std=c++11 -lkrpc -lprotobuf
-ls -la /usr/local/include/google/protobuf/io
-vim cpptest.cpp
-g++ cpptest.cpp -std=c++11 -lkrpc -lprotobuf
-vim cpptest.cpp
-g++ cpptest.cpp -std=c++11 -lkrpc -lprotobuf
-vim cpptest.cpp
-vim cpptest.cpp
-g++ cpptest.cpp -std=c++11 -lkrpc -lprotobuf
-vim cpptest.cpp
-g++ cpptest.cpp -std=c++11 -lkrpc -lprotobuf
-vim cpptest.cpp
-g++ cpptest.cpp -std=c++11 -lkrpc -lprotobuf
-vim cpptest.cpp
-vim cpptest.cpp
-g++ cpptest.cpp -std=c++11 -lkrpc -lprotobuf
-g++ cpptest.cpp -std=c++11 -lkrpc-0.4.4 -lprotobuf
-ls
-bazel
-ls
-ldd
-ldd --help
-man ldd
-ls /usr
-ls /usr/lib
-ldd /usr/local/lib/krpc.so
-ls /usr/local
-ls /usr/local/lib
-ldd /usr/local/lib/libkrpc.so
-vim cpptest.cpp
-g++ cpptest.cpp -std=c++11 -lkrpc-0.4.4 -lprotobuf
-vim cpptest.cpp
-ls
-g++ cpptest.cpp -std=c++11 -lkrpc-0.4.4 -lprotobuf
-vim cpptest.cpp
-g++ cpptest.cpp -std=c++11 -lkrpc-0.4.4 -lprotobuf
-ldd /usr/local/lib/libkrpc.so
-ls /usr/local/lib/krpc
-ls /usr/local/lib/
-ls /usr/local/include
-ls /usr/local/include/krpc
-ls
-mv cpptest.cpp main.cpp
-g++ main.cpp -std=c++11 -lkrpc-0.4.4 -lprotobuf
-vim cpptest.cpp
-vim main.cpp
-g++ main.cpp -std=c++11 -lkrpc-0.4.4 -lprotobuf
-g++ main.cpp -std=c++11 -lkrpc -lprotobuf
-vim main.cpp
-g++ main.cpp -std=c++11 -lkrpc -lprotobuf
-ls
-ldd a.out
-vim main.cpp
-g++ main.cpp -std=c++11 -lkrpc -lprotobuf
-vim main.cpp
-g++ main.cpp -std=c++11 -lkrpc -lprotobuf
-./a.out
-ldd a.out
-nm -C -u libkrpc.so
-nm -C -u /usr/local/lib/libkrpc.so
-g++ -std=c++11 -I/usr/local/include/krpc -lkrpc -lprotobuf
-g++ -std=c++11 -I/usr/local/include/krpc -lkrpc -lprotobuf main.cpp
-vim main.cpp
-g++ -std=c++11 -I/usr/local/include/krpc -lkrpc -lprotobuf main.cpp
-vim main.cpp
-g++ -std=c++11 -I/usr/local/include/krpc -lkrpc -lprotobuf main.cpp
-g++ -std=c++11 -I/usr/local/include -lkrpc -lprotobuf main.cpp
-vim main.cpp
-g++ -std=c++11 -I/usr/local/include/krpc -lkrpc -lprotobuf main.cpp
-g++ -std=c++11 -I/usr/local/include/krpc.hpp -lkrpc -lprotobuf main.cpp
-g++ -std=c++11 -I/usr/local/include -I/usr/local/include/krpc -lkrpc -lprotobuf main.cpp
-vim main.cpp
-g++ -std=c++11 -lprotobuf -lkrpc main.cpp
-vim main.cpp
-g++ main.cpp -std=c++11 -lprotobuf -lkrpc
-g++ -std=c++11 main.cpp -lprotobuf -lkrpc
-g++ -std=c++11 -lprotobuf main.cpp -lkrpc
-g++ -std=c++11 -lprotobuf -lkrpc main.cpp
-ls
-vim main.cpp
-g++ -std=c++11 -lprotobuf -lkrpc main.cpp
-g++ -std=c++11 -lkrpc -lprotobuf main.cpp
-g++ -std=c++11 -I/usr/include -I/usr/local/include -lprotobuf -lkrpc main.cpp
-g++ -std=c++11 -I/usr/include -I/usr/local/include -I/usr/local/include/krpc -lprotobuf -lkrpc main.cpp
-g++ -lprotobuf -lkrpc -std=c++11 main.cpp
-ls
-g++ -std=c++11 -lprotobuf main.cpp -o main -lkrpc
-g++ -std=c++11 -lprotobuf -lkrpc -o test
-g++ -std=c++11 -lprotobuf -lkrpc main.cpp -o main
-ls
-vim main.cpp
-g++ -std=c++11 -lprotobuf -lkrpc main.cpp -o main
-nm
-man nm
-nm /usr/loca/lib/libkrpc.so
-nm /usr/local/lib/libkrpc.so
-man nm
-nm -C /usr/local/lib/libkrpc.so
-nm -C -u /usr/local/lib/libkrpc.so
-man nm
-nm -C /usr/local/lib/libkrpc.so
-nm -C -u /usr/local/lib/libkrpc.so
-man nm
-nm -C -g /usr/local/lib/libkrpc.so
-nm -C /usr/local/lib/libkrpc.so
-g++ -std=c++11 -lprotobuf -lkrpc main.cpp -o main
-nm -C /usr/local/lib/libkrpc.so | grep krpc
-g++ -std=c++11 -lprotobuf -lkrpc main.cpp -o main
-g++ -std=c++11 -lprotobuf -lkrpc main.cpp -o main
-nm -C /usr/local/lib/libkrpc.so | grep krpc::connect
-g++ -std=c++11 -lprotobuf -lkrpc --as-needed main.cpp -o main
-g++ -std=c++11 -lprotobuf -lkrpc --no-as-needed main.cpp -o main
-vim main.cpp
-g++ -std=c++11 -lprotobuf -lkrpc main.cpp -o main
-vim main.cpp
-g++ -std=c++11 -lprotobuf -lkrpc main.cpp -o main
-vim main.cpp
-g++ -c -std=c++11 -lprotobuf -lkrpc main.cpp -o main
-ls
-g++ -c -std=c++11 -lprotobuf -lkrpc main.cpp
-ls
-rm main
-ls
-nm
-nm main.o
-nm -u main.o
-nm -C -u main.o
-g++ -o main.o -lkrpc -lprotobuf
-g++ -lkrpc -lprotobuf -o main.o
-g++ -lkrpc -lprotobuf -o new.o
-ls
-g++ -c -std=c++11 -lprotobuf -lkrpc main.cpp
-ls
-g++ -lkrpc -lprotobuf -o new.o
-ls
-g++ main.o -lkrpc -lprotobuf -o new.o
-ls
-g++ -lkrpc -lprotobuf main.o -o new.o
-g++ /usr/local/lib/libkrpc.so -lprotobuf main.o -o new.o
-g++ -lprotobuf /usr/local/lib/libkrpc.so main.o -o new.o
-g++ /usr/local/lib/libprotobuf.so /usr/local/lib/libkrpc.so main.o -o new.o
-g++ /usr/local/lib/libkrpc.so main.o -o new.o
-g++ main.o -o new.o
-./main.o
-ls
-ls -la
-g++ main.o
-g++ krpc-cpp-0.4.4/src/* -o new.o
-g++ -Ikrpc-cpp-0.4.4/include krpc-cpp-0.4.4/src/* -o new.o
-g++ -std=c++11 -Ikrpc-cpp-0.4.4/include krpc-cpp-0.4.4/src/* -o new.o
-g++ -std=c++11 -Ikrpc-cpp-0.4.4/include -Ikrpc-cpp-0.4.4/include/krpc krpc-cpp-0.4.4/src/* -o new.o
-g++ -std=c++11 -Ikrpc-cpp-0.4.4/include -Ikrpc-cpp-0.4.4/include/krpc krpc-cpp-0.4.4/src/*.cpp -o new.o
-g++ -std=c++11 -lprotobuf -Ikrpc-cpp-0.4.4/include -Ikrpc-cpp-0.4.4/include/krpc krpc-cpp-0.4.4/src/*.cpp -o new.o
-g++ -std=c++11 -Ikrpc-cpp-0.4.4/include -Ikrpc-cpp-0.4.4/include/krpc -lprotobuf krpc-cpp-0.4.4/src/*.cpp -o new.o
-g++ -std=c++11 -Ikrpc-cpp-0.4.4/include -Ikrpc-cpp-0.4.4/include/krpc -lprotobuf.so.14 krpc-cpp-0.4.4/src/*.cpp -o new.o
-g++ -std=c++11 -Ikrpc-cpp-0.4.4/include -Ikrpc-cpp-0.4.4/include/krpc -lprotobuf.so.14.0.0 krpc-cpp-0.4.4/src/*.cpp -o new.o
-g++ -std=c++11 -Ikrpc-cpp-0.4.4/include -Ikrpc-cpp-0.4.4/include/krpc -llibprotobuf.so.14.0.0 krpc-cpp-0.4.4/src/*.cpp -o new.o
-g++ -std=c++11 -Ikrpc-cpp-0.4.4/include -Ikrpc-cpp-0.4.4/include/krpc  krpc-cpp-0.4.4/src/*.cpp /usr/local/lib/libprotobuf.so.14.0.0 -o new.o
-g++ -std=c++11 -Ikrpc-cpp-0.4.4/include -Ikrpc-cpp-0.4.4/include/krpc  krpc-cpp-0.4.4/src/*.cpp /usr/local/lib/libprotobuf.so -o new.o
-g++ -std=c++11 -lkrpc -lprotobuf -lprotoc main.cpp
-ls
-g++ -std=c++11 -Ikrpc-cpp-0.4.4/include -Ikrpc-cpp-0.4.4/include/krpc main.o -o new.o
-g++ -std=c++11 -Ikrpc-cpp-0.4.4/include -Ikrpc-cpp-0.4.4/include/krpc main.o krpc-cpp-0.4.4/src/*.o -o new.o
-g++ -std=c++11 -Ikrpc-cpp-0.4.4/include -Ikrpc-cpp-0.4.4/include/krpc main.o krpc-cpp-0.4.4/src/*.o protobuf-3.4.0/src/google/protobuf/*.o
-python
-python3
-cd krpc
-ls
-emacsclient 
-emacsclient -t
-ckan &
-launch ksp &
-launch ksp &
-cd /usr/local/lib
-ls
-ls -la
-sudo mv libkrpc-0.4.4.so libkrpc-0.4.4.so.bak
-sudo mv libkrpc-0.4.4.so.bak2 libkrpc-0.4.4.so
-ls
-ls -la
-sudo mv libkrpc-0.4.4.so libkrpcx-0.4.4.so
-sudo mv libkrpc-0.4.4.so.bak libkrpc-0.4.4.so
-ls
-./buildso.sh
-./buildso.sh
-ls
- ls src
-./buildso.sh
-./buildso.sh
-g++ -std=c++11 -c -Wall -Werro -fPIC -Iinclude src/*.cpp
-g++ -std=c++11 -c -Wall -Werror -fPIC -Iinclude src/*.cpp
-g++ -std=c++11 -c -Wall -Werror -fPIC -Iinclude -Iinclude/krpc src/*.cpp
-ls
-g++ -std=c++11 -shared -o libkrpc-0.4.4.so src/*.o *.o
-g++ -std=c++11 -shared -o libkrpc-0.4.4.so src/*.o
-g++ -std=c++11 -shared src/*.o -o libkrpc-0.4.4.so
-g++ -std=c++11 -shared src/*.o -o libkrpc-0.4.4.so
-g++ -std=c++11 -c -Wall -Werror -fPIC -Iinclude -Iinclude/krpc src/*.cpp
-g++ -shared src/*.o -o libkrpc-0.4.4.so
-g++ src/*.o -shared -o libkrpc-0.4.4.so
-g++ *.o -shared -o libkrpc-0.4.4.so
-nm -C libkrpc-0.4.4.so
-nm -C li
-nm -C -u libkrpc-0.4.4.so
-cd /usr/local/lib
-ls
-sudo mv libkrpc-0.4.4.so libkrpc-0.4.4.so.bak
-cd ~/krpc
-ls
-cd krpc-cpp-0.4.4
-ls
-ls -la
-sudo mv libkrpc-0.4.4.so /usr/local/lib
-cd ..
-ls
-g++ -std=c++11 main.cpp
-cd /usr/local/lib
-ls
-mv libkrpc-0.4.4.so libkrpc-0.4.4.so.bak2
-sudo mv libkrpc-0.4.4.so libkrpc-0.4.4.so.bak2
-sudo mv libkrpc-0.4.4.so.bak libkrpc-0.4.4.so
-cd ~/krpc
-ls
-g++ -std=c++11 main.cpp
-g++ -std=c++11 -lkrpc -lprotobuf main.cpp
-g++ -std=c++11 -lkrpc -l:libprotobuf.so.14 main.cpp
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14 | grep Impl
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14 | grep krpc::StreamImpl
-g++ main.cpp -std=c++11 -lkrpc -lkrpcx -l:libprotobuf.so.14
-g++ main.cpp -std=c++11 -lkrpc -lkrpcx-0.4.4 -l:libprotobuf.so.14
-g++ main.cpp -std=c++11 -lkrpcx-0.4.4 -l:libprotobuf.so.14
-g++ main.cpp -std=c++11 -lkrpc -lkrpcx-0.4.4 -l:libprotobuf.so.14
-g++ main.cpp -std=c++11 -lkrpcx-0.4.4 -l:libprotobuf.so.14
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14
-g++ main.cpp -std=c++11 -lkrpc -lkrpcx-0.4.4 -l:libprotobuf.so.14 -Ikrpc-0.4.4/include -Ikrpc-0.4.4/include/krpc
-g++ main.cpp -std=c++11 -lkrpc -l-l:libprotobuf.so.14
-./a.out
-ls
-g++ main.cpp -std=c++11 -lkrpc -lkrpcx-0.4.4 -l:libprotobuf.so.14
-./a.out
-rm a.out
-g++ main.cpp -std=c++11 -lkrpc -lkrpcx-0.4.4 -l:libprotobuf.so.14 -Ikrpc-0.4.4/include -Ikrpc-0
-./a.out
-rm a.out
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14
-g++ main.cpp krpc-0.4.4/src/stream_impl.cpp krpc-0.4.4/src/event.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14
-g++ main.cpp krpc-cpp-0.4.4/src/stream_impl.cpp krpc-cpp-0.4.4/src/event.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14
-./a.out
-rm a.out
-g++ main.cpp krpc-cpp-0.4.4/src/stream_impl.cpp krpc-cpp-0.4.4/src/event.cpp -std=c++11 -l:libprotobuf.so.14
-g++ main.cpp krpc-cpp-0.4.4/src/stream_impl.cpp krpc-cpp-0.4.4/src/event.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14
-g++ main.cpp krpc-cpp-0.4.4/src/*.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14
-g++ main.cpp krpc-cpp-0.4.4/src/*.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14 -I/usr/local/include/krpc
-g++ main.cpp krpc-cpp-0.4.4/src/*.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14 -Iinclude/krpc
-g++ main.cpp krpc-cpp-0.4.4/src/*.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14 -Ikrpc-cpp-0.4.4/include/krpc
-g++ main.cpp krpc-cpp-0.4.4/src/stream_impl.cpp krpc-cpp-0.4.4/src/event.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14
-libtool
-ls
-cd krpc-cpp-0.4.4
-ls
-rm *.o
-man libtool
-clear
-g++ -std=c++11 -c -Wall -Werror -fPIC -Iinclude -Iinclude/krpc src/*.cpp
-g++ *.o -shared -o libkrpc-0.4.4.so
-ls
-mv libkrpc-0.4.4.so libkrpcx-0.4.4.so
-sudo cp /usr/local/lib
-sudo cp libkrpcx-0.4.4.so /usr/local/lib
-cd ..
-rm a.out
-g++ main.cpp -std=c++11 -lkrpc -lkrpcx-0.4.4 -l:libprotobuf.so.14
-./a.out
-nm -C /usr/local/lib/libkrpcx-0.4.4.so
-rm a.out
-g++ krpc-cpp-0.4.4/*.o -shared -o libkrpcx-0.4.4.so
-ls
-sudo cp libkrpcx-0.4.4.so /usr/local/lib
-g++ main.cpp -std=c++11 -lkrpc -lkrpcx-0.4.4 -l:libprotobuf.so.14
-./a.out
-g++ main.cpp -std=c++11 -lkrpcx-0.4.4 -lkrpc -l:libprotobuf.so.14
-g++ main.cpp -std=c++11 -lkrpc -lkrpcx-0.4.4 -l:libprotobuf.so.14
-./a.out
-sudo apt install libtool-bin
-libtool
-libtool compile
-libtool compile krpc-cpp-0.4.4/src/event.cpp
-libtool --mode=compile krpc-cpp-0.4.4/src/event.cpp
-libtool --help
-g++ main.cpp -std=c++11 -lkrpc -lkrpcx-0.4.4 -l:libprotobuf.so.14
-./a.out
-g++ main.cpp libkrpcx-0.4.4.so -std=c++11 -lkrpc -l:libprotobuf.so.14
-g++ main.cpp -std=c++11 -lkrpc libkrpcx-0.4.4.so -l:libprotobuf.so.14
-./a.out
-g++ main.cpp krpc-cpp-0.4.4/event.o krpc-cpp-0.4.4/stream_impl.o -std=c++11 -lkrpc -l:libprotobuf.so.14
-./a.out
-g++ krpc-cpp-0.4.4/src/*.lo krpc-cpp-0.4.4/event.o krpc-cpp-0.4.4/stream_impl.o -shared -o libkrpcx-0.4.4.so
-cd krpc-cpp-0.4.4
-cd src
-ls
-cp *.lo *.o
-man cp
-mv *.lo *.o
-ls
-cp *.lo ?.o
-rename 's/\.lo/\.o' *.lo
-ls
-rename
-rename 's/\.lo/\.o/' *.lo
-ls
-cd ..
-g++ krpc-cpp-0.4.4/src/*.o krpc-cpp-0.4.4/event.o krpc-cpp-0.4.4/stream_impl.o -shared -o libkrpcx-0.4.4.so
-cd ..
-g++ krpc-cpp-0.4.4/src/*.o krpc-cpp-0.4.4/event.o krpc-cpp-0.4.4/stream_impl.o -shared -o libkrpcx-0.4.4.so
-g++ krpc-cpp-0.4.4/src/*.cpp krpc-cpp-0.4.4/event.o krpc-cpp-0.4.4/stream_impl.o -shared -o libkrpcx-0.4.4.so
-cd krpc-cpp-0.4.4
-cmake .
-make
-sudo make install
-cd ..
-ls
-rm a.out
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14
-./a.out
-ls /usr/local/lib
-ls -la /usr/local/lib
-g++ main.cpp -std=c++11 -lkrpc-0.4.4 -l:libkrpc.so.0.4.4 -l:libprotobuf.so.14
-./a.out
-rm a.out
-g++ main.cpp -std=c++11 -lkrpc-0.4.4 -l:libkrpc.so.0.4.4 -l:libprotobuf.so.14
-./a.out
-cd krpc-cpp-0.4.4
-ls
-cmake .
-make
-sudo make install
-ls -la /usr/local/lib
-sudo make clean
-ls -la /usr/local/lib
-sudo rm /usr/local/lib/libkrpc*
-ls -la /usr/local/lib
-sudo make install
-ls -la /usr/local/lib
-cd ..
-g++ main.cpp -std=c++11 -lkrpc-0.4.4 -l:libprotobuf.so.14
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14
-rm a.out
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14
-./a.out
-sudo rm /usr/local/lib/libkrpc*
-cd krpc-cpp-0.4.4
-./configure
-make
-sudo make install
-ls -la /usr/local/lib
-cd ..
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14
-./a.out
-cd krpc
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.10
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14
-g++ main.cpp -std=c++11 -lkrpc -lprotobuf
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14
-g++ main.cpp -std=c++11 -lkrpc -lprotobuf
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.15
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14
-g++ main.cpp -std=c++11 -l:libkrpc.so -l:libprotobuf.so.14
-g++ main.cpp -std=c++11 -l:/usr/local/lib/libkrpc.so -l:libprotobuf.so.14
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14 -o main.o
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14
-g++ main.cpp -std=gnu++11 -lkrpc -l:libprotobuf.so.14
-g++ main.cpp -std=c++11 -l:libkrpc-0.4.4 -l:libprotobuf.so.14 
-g++ main.cpp -std=c++11 -l:libkrpc-0.4.4.so -l:libprotobuf.so.14 
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14 -I/usr/local/include/krpc
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14 -I/usr/local/include/krpc/services
-g++ main.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14 -I/usr/local/include/
-nm -C | grep StreamImpl
-nm -C /usr/local/lib/libkrpc.so | grep StreamImpl
-g++ main.cpp krpc-cpp-0.4.4/src/stream_impl.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14 -I/usr/local/include/
-g++ main.cpp krpc-cpp-0.4.4/src/stream_impl.cpp krpc-cpp-0.4.4/src/event.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14 -I/usr/local/include/
-ls
-./a.out
-./a.out
-cd krpc-cpp-0.4.4
-ls
-make
-./configure
-sudo ./configure
-sudo make
-sudo make >> output.txt
-ls
-vim output.txt
-sudo make
-make install
-ls
-ls *.sh
-cd ..
-ls
-mv buildso.sh krpc-cpp-0.4.4
-cd krpc-cpp-0.4.4
-ls
-./buildso.sh
-sudo chmod +x buildso.sh
-ls
-./buildso.sh
-cd ..
-g++ main.cpp krpc-cpp-0.4.4/src/stream_impl.cpp krpc-cpp-0.4.4/src/event.cpp -std=c++11 -lkrpc -l:libprotobuf.so.14 -I/usr/local/include/
 ls
 ./a.out
 ./a.out
@@ -498,3 +76,425 @@ lllll
 cd ~
 dos --config-mode -p edit
 dos --config-mode --mt-32 -p edit
+vim .emacs
+vim .emacs
+ls
+cd .emacs.d
+ls
+cd saves
+ls
+vim .
+nemo .
+cd ~/krpc
+ls -la
+rm buildcmd.sh
+ls
+ls -la
+rm buildso.sh
+mv ~/.emacs ~/.emacs.d/init.el
+ls ~/.emacs.d
+cd ~/.emacs.d
+ls
+ls elpa
+cd ~
+ls
+ls -la
+cd projects
+cd dot-files
+mkdir dot-files
+cd dot-files
+zsh
+sudo apt install zsh
+stow
+sudo apt install stow
+ls
+ls -la
+mkdir emacs
+cd emacs
+echo "testing" >> test.file
+ls
+ls -la
+cd ..
+stow emacs
+ls ..
+ls -la ..
+ls
+stow -D emacs
+ls -la ..
+cd dot-files
+ls
+cd emacs
+ls
+rm test.file
+ls
+cp -r ~/.emacs.d .
+ls
+ls -la
+ls .emacs.d
+cd ..
+mkdir vim
+ls
+cd vim 
+cp -r ~/.vim .
+ls -la ~
+ls ~/.config
+xed
+cd ..
+mkdir bash
+mkdir scripts
+mkdir scummvm
+mkdir
+ls -la ~/.dosbox
+mkdir dosbox
+ls
+mkdir launchy
+mkdir zsh
+ls
+ls ~/.config
+ls -la
+cd ~/.config
+ls -la
+ls "Unknown Organization"
+nemo .
+cd ~/projects/dot-files
+ls
+ls bash
+ls -la bash
+cd bash
+cp ~/.bash* .
+ls -la
+cp ~/.profile .
+ls -la
+cd ..
+ll
+ls -la 
+ls -la dosbox
+dos --help
+dos -h
+launch --help
+dos --show
+ls
+ls dosbox
+cd dosbox
+ls
+mkdir .dosbox
+ls
+ls -la
+rm .dosbox
+rm -r .dosbox
+ln -s ~/DOS/conf .dosbox
+ls -la
+cd ..
+ls ~/.dosbox
+ls -la ~/.dosbox
+ls ~/.*
+ls ~/.
+ls ~/
+ls -la ~
+rm -r ~/.dosbox
+ls
+man stow
+stow dosbox
+cd dosbox
+ls -la
+rm .dosbox
+ln -s ../DOS/conf .dosbox
+cd ..
+stow dosbox
+ls -la
+ls -la ..
+ls -la ../.dosbox
+ls ../.dosbox
+cd ..
+cd .dosbox
+ls -la
+cd dot-files/dosbox
+ls
+ls -la
+cd ..
+man stow
+ls -la ..
+man stow
+stow -t ~ dosbox
+ls -la ~
+cd ~/.dosbox
+ls -la dosbox
+ls
+cd dosbox
+ls
+mkdir .dosbox
+ls -la
+mv *.conf .dosbox
+ls
+ls -la
+rm ~/.dosbox
+rm ~/DOS/conf
+rm -r ~/DOS/conf
+ln -s ~/.dosbox ~/DOS/conf
+ls -la ~/DOS
+ls -la ~
+cd ..
+stow -t ~ dosbox
+ls
+ls -la bash
+ls -la dosbox
+ls -la emacs
+ls -la vim
+ls -la launchy
+cp ~/.launchrc launchy
+ls -la launchy
+ls scripts
+cp -r ~/bin scripts
+ls -la scripts
+ls
+ls -la scummvm
+cp ~/.scummvm* scummvm
+cp -r ~/.scummvm* scummvm
+ls -la vim
+cp -r ~/.vim* vim
+ls -la zsh
+cp -r ~/.zsh zsh
+cp -r ~/.zsh* zsh
+ls -la zsh
+git init
+ls
+stow -t ~ bash
+rm ~/.bash*
+stow -t ~ bash
+rm ~/.profile
+stow -t ~ bash
+stow dosbox
+ls -la dosbox
+ls -la dosbox/.dosbox
+ls
+ls ..
+ls -la ..
+stow -D dosbox
+ls -la ..
+stow -t ~ dosbox
+ls
+stow -t ~ emacs
+cp -r ~/.emacs* emacs
+sudo cp -r ~/.emacs* emacs
+rm -r ~/.emacs*
+stow -t ~ emacs
+ls
+stow -t ~ launchy
+rm ~/.launchrc
+stow -t ~ launchy
+stow -t ~ scripts
+ls -la ~/bin
+launch
+dos -h
+dos
+launcy
+launchy
+~/bin-bak/launchy
+ls
+stow -t ~ scummvm
+rm -r ~/.scummvm
+stow -t ~ scummvm
+rm -r ~/.scummvm*
+stow -t ~ scummvm
+stow -t ~ vim
+rm -r ~/.vim*
+stow -t ~ vim
+ls
+stow -t ~ zsh
+rm ~/.zshrc
+stow -t ~ zsh
+ls -la ~
+stowall
+stow-all
+vim readme.md
+git status
+git add
+git add .
+git status
+cd scripts
+ls
+cd bin
+ls
+cd ckan
+ls lib
+rm -r lib
+ls -la
+vim ckan
+git status
+git commit -
+git commit -A
+git commit -a
+git help global
+git help
+git config --global core.editor vim
+ls -la ~
+cd ..
+cd ..
+ls
+vim ~/.gitconfig
+ls
+mkdir git
+mv ~/.gitconfig git
+stow -t ~ git
+ls -la ~
+git status
+git add --all
+git status
+git stage
+git add .
+git status
+git add vim/.vim/bundle/Vundle.vim
+git status
+git commit -A
+git commit -a
+git status
+git add vim/.vim/bundle/Vundle.vim
+git status
+rm readme.md
+git commit --all
+git commit --all -m "Not using editor for message"
+git commit --all -m "Not using editor for message"
+git remote add origin https://github.com/yehoodig/dot-files.git
+git remote -v
+git push origin master
+git pull
+ls
+ls -la
+git push origin master
+git push origin master
+git push --help
+git pull ..
+git pull ...
+git pull
+git pull origin master
+ls
+git push origin master
+git push origin master
+ls -la vim/.vim/bundle
+ls -la
+ls -la bash
+vim
+ls
+cd vim
+ls
+ls -la
+cd .vim
+ls
+cd bundle
+ls
+git remove .
+git --help
+ls
+cd ..
+git rm --cached bundle/*
+cd ..
+cd ..
+ls -la
+vim .gitignore
+ls
+cd vim 
+cd .vim
+ls
+git status
+git add --all
+git status
+git commit -A
+git commit -a
+git push origin master
+cd ..
+cd ..
+vim .gitignore
+vim README.md
+git add README.md
+git commit -m add a readme
+git commit -m "added a readme'
+"
+ls
+git status
+git push origin master
+cd ..
+ls
+ls /mnt
+ls /mnt/windows
+ls /media
+ls /media/yehoodig
+ls /media/yehoodig/WINDATA
+ln -s /media/yehoodig/WINDATA/GalaxyClient/Games/"Kerbal Space Program"/Ships/Script kos
+ls
+ls -la
+cd ..
+ls
+cd "GOG Games"
+ls
+cd "Kerbal Space Program 1.3.1"
+ls
+cd game
+ls
+cd Ships
+ls
+ls -la
+ls Script
+cd Script
+ls
+view temp.ks
+cd ..
+mv Script Script_bak
+ln -s ~/projects/kos Script
+ls
+ls -la
+ls Script
+ls
+mv Script_bak/*.* Script
+ls Script
+rm -r Script_bak
+cd ~/projects/kos
+ls
+ls -la
+git init
+git remote add origin https://github.com/yehoodig/kos-missions.git
+git remote -v
+git pull origin master
+ls
+git status
+git commit -a -m "First push to GH"
+git status
+git push origin master
+ls
+cd lib
+ls
+vim transfer_ctl.ks
+git status
+rm *.swp
+ls
+ls -la
+rm *.swp
+rm .transfer_ctl.ks.swp
+git status
+git commit -a -m "Commented etaPhaseAngle better"
+git push origin master
+cd ~/krpc
+lcd ~/projects/krpc
+cd ~/projects/krpc
+ls
+mkdir python
+mkdir cpp
+ls
+git init
+git remote add https://github.com/yehoodig/krpc-programs.git
+git remote add origin https://github.com/yehoodig/krpc-programs.git
+git remote -v
+git pull origin master
+ls
+git push origin master
+ls
+git add -A
+git commit -a -m "first push"
+git push origin master
+xed
+cd /etc/apt
+ls
+ls -la
+sudo rm sources.list
+ls
+ cd ~/.emacs.d
+ls

@@ -18,41 +18,54 @@
 (setq package-enable-at-startup nil)
 (package-initialize)
 
+;; Bootstrap use-package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+
 
 ;; Setup Evil mode
-(add-to-list 'load-path "~/.emacs.d/evil")
-;; Evil mode specific things
-(setq-default evil-shift-width 3)
-(require 'evil)
-(evil-mode 1)
-
+(use-package evil
+  :ensure t
+  :init
+  (setq-default evil-shift-width 3)
+  :config
+  (evil-mode 1)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;     Custom Evil keybindings       ;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (define-key evil-normal-state-map (kbd "C-j") 'next-buffer)
+  (define-key evil-normal-state-map (kbd "C-k") 'previous-buffer)
+  (define-key evil-normal-state-map (kbd "C-;") 'term-toggle))
+  
+  
 ;; Other packages
-(require 'powerline)
-(powerline-center-evil-theme)
-(require 'neotree)
+(use-package powerline
+  :ensure t
+  :init
+  :config
+  (powerline-center-evil-theme))
+
+(use-package neotree
+  :ensure t
+  :init
+  :config
+  ;; Neotree stuff for Evil mode
+  (define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
+  (evil-define-key 'normal neotree-mode-map (kbd "h") 'neotree-hidden-file-toggle)
+  (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-change-root)
+  (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+  (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter))
 
 ;; Get rid of ~ file clutter, but backups are good
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
 
 ;; Word Wrapping
 (global-visual-line-mode t)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;     Custom Evil keybindings       ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define-key evil-normal-state-map (kbd "C-j") 'next-buffer)
-(define-key evil-normal-state-map (kbd "C-k") 'previous-buffer)
-
-(define-key evil-normal-state-map (kbd "C-;") 'toggle-term)
-
-;; Neotree stuff for Evil mode
-(define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
-(evil-define-key 'normal neotree-mode-map (kbd "h") 'neotree-hidden-file-toggle)
-(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-change-root)
-(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
-(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
-(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
-
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Line numbering  ;;
@@ -67,10 +80,8 @@
 ;; Per mode line numbering behaviour 
 (add-hook 'prog-mode-hook 'linum-relative-mode 1)
 (add-hook 'term-mode-hook (lambda ()
-									 (linum-mode 0)
-									 (linum-relative-mode 0)))
-
-
+   (linum-mode 0)
+   (linum-relative-mode 0)))
 
 ;;;;;;;;;;;;;;;;;
 ;; Appearance  ;;
@@ -78,6 +89,7 @@
 (setq inhibit-startup-screen t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;;;;;;;;;;;;
 ;; Themes ;;
@@ -103,11 +115,15 @@
  )
 
 ;; Custom functions
-(defun edit-dot-emacs ()
-  (interactive)
-  (find-file "~/.emacs.d/init.el"))
+(defun edit-dot (name)
+  (interactive
+   (list (read-string "Name: ")))
+  (if (string= name "vim")
+      (find-file "~/.vim/vimrc"))
+  (if (string= name "emacs")
+      (find-file "~/.emacs.d/init.el")))
 
-(defun toggle-term ()
+(defun term-toggle ()
   "From: https://gist.github.com/msoeken/4b2e3ee07b7252f8cb99 Toggles between terminal and current buffer (creates terminal, if none exists)"
   (interactive)
   (if (string= (buffer-name) "*ansi-term*")
@@ -117,4 +133,3 @@
       (progn
         (ansi-term (getenv "SHELL"))
         (setq show-trailing-whitespace nil)))))
-;;(global-set-key (kbd "<f9>") 'toggle-term)
