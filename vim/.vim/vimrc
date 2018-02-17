@@ -11,7 +11,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 " My Plugins
-Plugin 'tomvanderlee/vim-kerboscript'
+"Plugin 'tomvanderlee/vim-kerboscript'
+Plugin 'yump/vim-kerboscript'
 Plugin 'vimwiki/vimwiki'
 Plugin 'scrooloose/nerdtree'
 Plugin 'itchyny/calendar.vim'
@@ -54,6 +55,11 @@ filetype plugin indent on    " required for Vundle
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" Fixes for Nerdtree
+"let g:NERDTreeDirArrows=0
+let g:NERDTreeDirArrowExpandable='+'
+let g:NERDTreeDirArrowCollapsible='~'
+
 colorscheme desert
 
 "Number lines
@@ -65,7 +71,9 @@ set shiftwidth=3
 set expandtab
 set tabstop=3
 
-"The following sets the line/block behavior of the cursor.  Works in MinTTY
+"The following sets the line/block behavior of the cursor.  
+" -- Fixes problems in MinTTY for WSL
+" -- Causes problems in Xenial in Crouton on Chromebook
 "let sets a variable.
 "& returns the variable that holds an option.
 "t_ options deal with how the terminal behaves and events.
@@ -78,6 +86,7 @@ set tabstop=3
 "and
 "ending sequence is <space>q
 "
+"enable this in Mintty
 "t_SI is start insert mode
 "t_EI is end insert or replace mode
 "t_SR is start replace mode
@@ -91,9 +100,9 @@ set tabstop=3
 "5  -> blinking bar (xterm).
 "6  -> steady bar (xterm).
 
-let &t_SI = "\e[5 q"
-let &t_SR = "\e[3 q"
-let &t_EI = "\e[1 q"
+"let &t_SI = "\e[5 q"
+"let &t_SR = "\e[3 q"
+"let &t_EI = "\e[1 q"
 
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
