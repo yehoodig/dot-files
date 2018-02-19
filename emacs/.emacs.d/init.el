@@ -67,11 +67,16 @@
   (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
   (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter))
 
+;;;;;;;;;;;
+;; MISC  ;;
+;;;;;;;;;;;
+
+(server-start)
+(if (file-exists-p "~/.emacs.d/emacs-KOS-mode")
+		   (load "~/.emacs.d/emacs-KOS-mode/kos-mode.el"))
+
 ;; Get rid of ~ file clutter, but backups are good
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
-
-;; Word Wrapping
-(global-visual-line-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Line numbering  ;;
@@ -96,6 +101,9 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; Word Wrapping
+(global-visual-line-mode t)
 
 ;;;;;;;;;;;;
 ;; Themes ;;
