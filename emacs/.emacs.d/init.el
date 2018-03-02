@@ -49,6 +49,19 @@
   
   
 ;; Other packages
+(defun use-git-package ()
+   (if (not (file-exists-p "~/.emacs.d/ks-mode"))
+      (git-clone "https://github.com/jarpy/ks-mode" "~/.emacs.d/")) 
+   (load "~/.emacs.d/ks-mode/ks.el"))
+(use-package git
+  :ensure t
+  :init
+  :config
+  ;; Non-Elpa packages to load
+   (if (not (file-exists-p "~/.emacs.d/ks-mode"))
+      (git-clone "https://github.com/jarpy/ks-mode" "~/.emacs.d/")) 
+   (load "~/.emacs.d/ks-mode/ks.el"))
+
 (use-package powerline
   :ensure t
   :init
@@ -67,32 +80,30 @@
   (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
   (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter))
 
+(use-package linum-relative
+  :ensure t
+  :init
+  :config
+  ;; Relative line numbers
+  (linum-relative-mode)
+
+  ;; In relative mode, current line is absolute number, not 0.
+  (setq linum-relative-current-symbol "")
+
+  ;; Per mode line numbering behaviour 
+  (add-hook 'prog-mode-hook 'linum-relative-mode 1)
+  (add-hook 'term-mode-hook (lambda ()
+     (linum-mode 0)
+     (linum-relative-mode 0))))
+
 ;;;;;;;;;;;
 ;; MISC  ;;
 ;;;;;;;;;;;
 
 (server-start)
-(if (file-exists-p "~/.emacs.d/emacs-KOS-mode")
-		   (load "~/.emacs.d/emacs-KOS-mode/kos-mode.el"))
 
 ;; Get rid of ~ file clutter, but backups are good
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
-
-;;;;;;;;;;;;;;;;;;;;;
-;; Line numbering  ;;
-;;;;;;;;;;;;;;;;;;;;;
-
-;; Relative line numbers
-(linum-relative-mode)
-
-;; In relative mode, current line is absolute number, not 0.
-(setq linum-relative-current-symbol "")
-
-;; Per mode line numbering behaviour 
-(add-hook 'prog-mode-hook 'linum-relative-mode 1)
-(add-hook 'term-mode-hook (lambda ()
-   (linum-mode 0)
-   (linum-relative-mode 0)))
 
 ;;;;;;;;;;;;;;;;;
 ;; Appearance  ;;
