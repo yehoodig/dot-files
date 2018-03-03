@@ -65,20 +65,28 @@
   :config
   (powerline-center-evil-theme))
 
-(defun neotree-enter-hide ()
-  (neotree-enter)
-  (neotree-hide))
 (use-package all-the-icons
   :ensure t
   :init
-  (all-the-icons-install-fonts)
   :config
   )
+
 
 (use-package neotree
   :ensure t
   :init
   :config
+   (defun custom-neotree-enter-file (full-path &optional arg)
+      "Open a file node and hides tree."
+      (neo-global--select-mru-window arg)
+      (find-file full-path)
+      (neotree-hide))
+
+   (defun custom-neotree-enter (&optional arg)
+      (interactive "P")
+      (neo-buffer--execute arg 'custom-neotree-enter-file 'neo-open-dir))
+   
+  ;;You may need to execute all-the-icons-install-fonts manually
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
   ;; Neotree stuff for Evil mode
@@ -87,7 +95,7 @@
   (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-change-root)
   (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
   (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
-  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter-hide))
+  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'custom-neotree-enter))
 
 (use-package linum-relative
   :ensure t
