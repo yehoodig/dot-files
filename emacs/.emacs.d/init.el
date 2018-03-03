@@ -49,10 +49,7 @@
   
   
 ;; Other packages
-(defun use-git-package ()
-   (if (not (file-exists-p "~/.emacs.d/ks-mode"))
-      (git-clone "https://github.com/jarpy/ks-mode" "~/.emacs.d/")) 
-   (load "~/.emacs.d/ks-mode/ks.el"))
+
 (use-package git
   :ensure t
   :init
@@ -68,17 +65,29 @@
   :config
   (powerline-center-evil-theme))
 
+(defun neotree-enter-hide ()
+  (neotree-enter)
+  (neotree-hide))
+(use-package all-the-icons
+  :ensure t
+  :init
+  (all-the-icons-install-fonts)
+  :config
+  )
+
 (use-package neotree
   :ensure t
   :init
   :config
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
   ;; Neotree stuff for Evil mode
   (define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
   (evil-define-key 'normal neotree-mode-map (kbd "h") 'neotree-hidden-file-toggle)
   (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-change-root)
   (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
   (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
-  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter))
+  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter-hide))
 
 (use-package linum-relative
   :ensure t
@@ -158,3 +167,11 @@
       (progn
         (ansi-term (getenv "SHELL"))
         (setq show-trailing-whitespace nil)))))
+
+;; Work in progress
+(defun use-git-package (name)
+  "Work in progress: Clone github repository if not existent in emacs.d"
+   (if (not (file-exists-p "~/.emacs.d/ks-mode"))
+      (git-clone "https://github.com/jarpy/ks-mode" "~/.emacs.d/")) 
+   (load "~/.emacs.d/ks-mode/ks.el"))
+

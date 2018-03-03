@@ -1,7 +1,5 @@
 bash/.bash_history
 vim/.vim/bundle/
-emacs/.emacs.d/saves/
-emacs/.emacs.d/evil/
-emacs/.emacs.d/auto-save-list/
-emacs/.emacs.d/elpa/
+emacs/.emacs.d/
+!emacs/.emacs.d/init.el
 local/
