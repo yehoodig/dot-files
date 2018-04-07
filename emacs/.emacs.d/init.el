@@ -45,7 +45,30 @@
 
   (define-key evil-normal-state-map (kbd "C-j") 'next-buffer)
   (define-key evil-normal-state-map (kbd "C-k") 'previous-buffer)
-  (define-key evil-normal-state-map (kbd "C-;") 'term-toggle))
+  (define-key evil-normal-state-map (kbd "C-<return>") 'term-toggle)
+
+  ;; For org mode
+  ;; Some of these are from evil-org-mode, but this seemed easier to implement somehow.
+  (evil-define-key 'normal org-mode-map
+   (kbd "C-c") 'org-toggle-checkbox
+   "H" 'org-shiftleft
+   "J" 'org-shiftdown
+   "K" 'org-shiftup
+   "L" 'org-shiftright
+   "<" 'org-metaleft
+   ">" 'org-metaright
+   "-" 'org-cycle-list-bullet
+   "t" 'org-todo)
+  )
+
+;;(use-package evil-org
+;;  :ensure t
+;;  :after org
+;;  :config
+;;  (add-hook 'org-mode-hook 'evil-org-mode)
+;;  (add-hook 'evil-org-mode-hook
+;;	    (lambda ()
+;;	      (evil-org-set-key-theme))))
   
   
 ;; Other packages
@@ -65,15 +88,15 @@
   (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-change-root)
   (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
   (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
-  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter))
+  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter-hide))
 
 ;;;;;;;;;;;
 ;; MISC  ;;
 ;;;;;;;;;;;
 
 (server-start)
-(if (file-exists-p "~/.emacs.d/emacs-KOS-mode")
-		   (load "~/.emacs.d/emacs-KOS-mode/kos-mode.el"))
+(if (file-exists-p "~/.emacs.d/misc/ks.el")
+		   (load "~/.emacs.d/misc/ks.el"))
 
 ;; Get rid of ~ file clutter, but backups are good
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
@@ -101,9 +124,16 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+(show-paren-mode 1)
+(setq show-paren-style 'mixed)
 
 ;; Word Wrapping
 (global-visual-line-mode t)
+
+;;Tabs 
+(setq-default indent-tabs-mode nil)
+;;Autoindent
+(electric-indent-mode 1)
 
 ;;;;;;;;;;;;
 ;; Themes ;;
@@ -147,3 +177,15 @@
       (progn
         (ansi-term (getenv "SHELL"))
         (setq show-trailing-whitespace nil)))))
+
+;;from: https://github.com/jaypei/emacs-neotree/issues/77
+(defun neo-open-file-hide (full-path &optional arg)
+  "Open a file node and hides tree."
+  (neo-global--select-mru-window arg)
+  (find-file full-path)
+  (neotree-hide))
+
+(defun neotree-enter-hide (&optional arg)
+  "Enters file and hides neotree directly"
+  (interactive "P")
+  (neo-buffer--execute arg 'neo-open-file-hide 'neo-open-dir))
