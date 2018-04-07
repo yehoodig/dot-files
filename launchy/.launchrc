@@ -1,0 +1,34 @@
+#This file is intended to be used as a list of commands to launch games.
+#This is useful because I will not need to remember which emulator
+#or whatever it needs to run.
+#It is read by grep from within the launchy script (~/bin/launchy) and the command after the equal sign is executed.
+#I recommend using only one command, while multiple commands on a single line are theoretically possible, it seems to cause problems.  If something more complex is required try writing a shell script and put it in ~/bin/launch.  Launchy will look there if the name is not in this list.  You can make an explicit entry here if you like but as long as the shell script has the same name as was passed to launchy you do not need to.
+#And please, if you comment this file do not add equals signs.
+# How is this different from bash aliases? Well, these might not be, but the script itself does have some benefits, for instance making it easier to interact with a dosbox installation.
+
+##DOS Games
+afterlife=dos alife.bat
+dark=dos dark.bat
+
+##ScummVM Games
+monkey=scummvm monkey
+monkey2=scummvm monkey2
+curse=scummvm comi
+fate=scummvm atlantis
+
+##Wine
+rct=win "C:\GOG Games\RollerCoaster Tycoon Deluxe\RCT.EXE"
+
+##Native...etc
+minecraft=java -jar ~/other_games/Minecraft.jar
+ksp="/home/yehoodig/GOG Games/Kerbal Space Program 1.3.1/start.sh"
+ksp-1.1.3="/home/yehoodig/GOG Games/Kerbal Space Program 1.1.3/start.sh"
+ksp-1.05="/home/yehoodig/GOG Games/Kerbal Space Program 1.0.5.1028/start.sh"
+ksp-1.05-stock="/home/yehoodig/GOG Games/Kerbal Space Program 1.0.5.1028_stock/start.sh"
+ksp-1.05-rss="/home/yehoodig/GOG Games/Kerbal Space Program 1.0.5.1028_rss/start.sh"
+grim="/home/yehoodig/GOG Games/Grim Fandango Remastered/start.sh"
+ckan=mono /media/windata/lib/software/other_software/ckan.exe
+
+#Debugging
+test=echo This command was executed
+

@@ -72,16 +72,48 @@
   
   
 ;; Other packages
+
+(use-package git
+  :ensure t
+  :init
+  :config
+  ;; Non-Elpa packages to load
+   (if (not (file-exists-p "~/.emacs.d/ks-mode"))
+      (git-clone "https://github.com/jarpy/ks-mode" "~/.emacs.d/")) 
+   (load "~/.emacs.d/ks-mode/ks.el"))
+
 (use-package powerline
   :ensure t
   :init
   :config
   (powerline-center-evil-theme))
 
+(use-package all-the-icons
+  :ensure t
+  :init
+  :config
+  )
+
+
 (use-package neotree
   :ensure t
   :init
   :config
+  ;;from: https://github.com/jaypei/emacs-neotree/issues/77
+  (defun neo-open-file-hide (full-path &optional arg)
+    "Open a file node and hides tree."
+    (neo-global--select-mru-window arg)
+    (find-file full-path)
+    (neotree-hide))
+
+  (defun neotree-enter-hide (&optional arg)
+    "Enters file and hides neotree directly"
+    (interactive "P")
+    (neo-buffer--execute arg 'neo-open-file-hide 'neo-open-dir))
+   
+  ;;You may need to execute all-the-icons-install-fonts manually
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
   ;; Neotree stuff for Evil mode
   (define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
   (evil-define-key 'normal neotree-mode-map (kbd "h") 'neotree-hidden-file-toggle)
@@ -89,6 +121,22 @@
   (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
   (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
   (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter-hide))
+
+(use-package linum-relative
+  :ensure t
+  :init
+  :config
+  ;; Relative line numbers
+  (linum-relative-mode)
+
+  ;; In relative mode, current line is absolute number, not 0.
+  (setq linum-relative-current-symbol "")
+
+  ;; Per mode line numbering behaviour 
+  (add-hook 'prog-mode-hook 'linum-relative-mode 1)
+  (add-hook 'term-mode-hook (lambda ()
+     (linum-mode 0)
+     (linum-relative-mode 0))))
 
 ;;;;;;;;;;;
 ;; MISC  ;;
@@ -100,22 +148,6 @@
 
 ;; Get rid of ~ file clutter, but backups are good
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
-
-;;;;;;;;;;;;;;;;;;;;;
-;; Line numbering  ;;
-;;;;;;;;;;;;;;;;;;;;;
-
-;; Relative line numbers
-(linum-relative-mode)
-
-;; In relative mode, current line is absolute number, not 0.
-(setq linum-relative-current-symbol "")
-
-;; Per mode line numbering behaviour 
-(add-hook 'prog-mode-hook 'linum-relative-mode 1)
-(add-hook 'term-mode-hook (lambda ()
-   (linum-mode 0)
-   (linum-relative-mode 0)))
 
 ;;;;;;;;;;;;;;;;;
 ;; Appearance  ;;
@@ -178,14 +210,10 @@
         (ansi-term (getenv "SHELL"))
         (setq show-trailing-whitespace nil)))))
 
-;;from: https://github.com/jaypei/emacs-neotree/issues/77
-(defun neo-open-file-hide (full-path &optional arg)
-  "Open a file node and hides tree."
-  (neo-global--select-mru-window arg)
-  (find-file full-path)
-  (neotree-hide))
+;; Work in progress
+(defun use-git-package (name)
+  "Work in progress: Clone github repository if not existent in emacs.d"
+   (if (not (file-exists-p "~/.emacs.d/ks-mode"))
+      (git-clone "https://github.com/jarpy/ks-mode" "~/.emacs.d/")) 
+   (load "~/.emacs.d/ks-mode/ks.el"))
 
-(defun neotree-enter-hide (&optional arg)
-  "Enters file and hides neotree directly"
-  (interactive "P")
-  (neo-buffer--execute arg 'neo-open-file-hide 'neo-open-dir))
