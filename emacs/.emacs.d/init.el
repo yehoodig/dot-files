@@ -45,6 +45,7 @@
   (define-key evil-normal-state-map (kbd "C-j") 'next-buffer)
   (define-key evil-normal-state-map (kbd "C-k") 'previous-buffer)
   (define-key evil-normal-state-map (kbd "C-<return>") 'term-toggle)
+  (define-key evil-insert-state-map (kbd "C-<return>") 'term-toggle)
 
   ;; For org mode
   ;; Some of these are from evil-org-mode, but this seemed easier to implement somehow.
@@ -60,15 +61,6 @@
    "t" 'org-todo)
   )
 
-;;(use-package evil-org
-;;  :ensure t
-;;  :after org
-;;  :config
-;;  (add-hook 'org-mode-hook 'evil-org-mode)
-;;  (add-hook 'evil-org-mode-hook
-;;	    (lambda ()
-;;	      (evil-org-set-key-theme))))
-  
   
 ;; Other packages
 
@@ -78,7 +70,7 @@
   :config
   ;; Non-Elpa packages to load
    (if (not (file-exists-p "~/.emacs.d/ks-mode"))
-      (git-clone "https://github.com/jarpy/ks-mode" "~/.emacs.d/")) 
+      (git-clone "https://github.com/yehoodig/ks-mode" "~/.emacs.d/")) 
    (load "~/.emacs.d/ks-mode/ks.el"))
 
 (use-package powerline
@@ -122,6 +114,7 @@
   (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
   (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter-hide))
 
+;; infocom z games
 (use-package malyon
   :ensure t
   :init
@@ -148,8 +141,6 @@
 ;;;;;;;;;;;
 
 (server-start)
-(if (file-exists-p "~/.emacs.d/misc/ks.el")
-		   (load "~/.emacs.d/misc/ks.el"))
 
 ;; Get rid of ~ file clutter, but backups are good
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
@@ -199,6 +190,8 @@
 (defun edit-dot (name)
   (interactive
    (list (read-string "Name: ")))
+  (if (string= name "bash")
+      (find-file "~/.bashrc"))
   (if (string= name "vim")
       (find-file "~/.vim/vimrc"))
   (if (string= name "emacs")
