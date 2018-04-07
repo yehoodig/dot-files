@@ -38,6 +38,8 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   (define-key evil-motion-state-map (kbd "C-j") 'next-buffer)
   (define-key evil-motion-state-map (kbd "C-k") 'previous-buffer)
+  (define-key evil-insert-state-map (kbd "C-j") 'next-buffer)
+  (define-key evil-insert-state-map (kbd "C-k") 'previous-buffer)
   
   ;; Fixes the above navigation, so that the cyle doesn't stick in the buffer menu
   (define-key Buffer-menu-mode-map (kbd "C-k") 'previous-buffer)
@@ -120,6 +122,7 @@
   :init
   :config
   )
+
 (use-package linum-relative
   :ensure t
   :init
@@ -207,11 +210,3 @@
       (progn
         (ansi-term (getenv "SHELL"))
         (setq show-trailing-whitespace nil)))))
-
-;; Work in progress
-(defun use-git-package (name)
-  "Work in progress: Clone github repository if not existent in emacs.d"
-   (if (not (file-exists-p "~/.emacs.d/ks-mode"))
-      (git-clone "https://github.com/jarpy/ks-mode" "~/.emacs.d/")) 
-   (load "~/.emacs.d/ks-mode/ks.el"))
-
