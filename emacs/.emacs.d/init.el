@@ -26,7 +26,6 @@
 (eval-when-compile
   (require 'use-package))
 
-
 ;; Setup Evil mode
 (use-package evil
   :ensure t
@@ -66,6 +65,7 @@
   (powerline-center-evil-theme))
 
 (use-package all-the-icons
+  :if window-system
   :ensure t
   :init
   :config
@@ -97,6 +97,11 @@
   (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
   (evil-define-key 'normal neotree-mode-map (kbd "RET") 'custom-neotree-enter))
 
+(use-package malyon
+  :ensure t
+  :init
+  :config
+  )
 (use-package linum-relative
   :ensure t
   :init
