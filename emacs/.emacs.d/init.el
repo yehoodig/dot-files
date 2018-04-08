@@ -12,7 +12,7 @@
 (require 'package)
 
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+;;(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
 (setq package-enable-at-startup nil)
@@ -25,6 +25,10 @@
 
 (eval-when-compile
   (require 'use-package))
+
+
+;;custom bits
+(load "~/.emacs.d/ks-mode/ks.el")
 
 ;; Setup Evil mode
 (use-package evil
@@ -70,10 +74,10 @@
   :ensure t
   :init
   :config
-  ;; Non-Elpa packages to load
-   (if (not (file-exists-p "~/.emacs.d/ks-mode"))
-      (git-clone "https://github.com/yehoodig/ks-mode" "~/.emacs.d/")) 
-   (load "~/.emacs.d/ks-mode/ks.el"))
+;;  ;; Non-Elpa packages to load
+   ;;(if (not (file-exists-p "~/.emacs.d/ks-mode"))
+      ;;----> this is the non-working line (git-clone "https://github.com/yehoodig/ks-mode" "~/.emacs.d/")) 
+)
 
 (use-package powerline
   :ensure t
@@ -116,12 +120,12 @@
   (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
   (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter-hide))
 
-;; infocom z games
-(use-package malyon
-  :ensure t
-  :init
-  :config
-  )
+;;;; infocom z games
+;;(use-package malyon
+;;  :ensure t
+;;  :init
+;;  :config
+;;  )
 
 (use-package linum-relative
   :ensure t
@@ -135,6 +139,7 @@
 
   ;; Per mode line numbering behaviour 
   (add-hook 'prog-mode-hook 'linum-relative-mode 1)
+  (add-hook 'ks-mode-hook 'linum-relative-mode 1)
   (add-hook 'term-mode-hook (lambda ()
      (linum-mode 0)
      (linum-relative-mode 0))))
