@@ -100,9 +100,15 @@ set tabstop=3
 "5  -> blinking bar (xterm).
 "6  -> steady bar (xterm).
 
-"let &t_SI = "\e[5 q"
-"let &t_SR = "\e[3 q"
-"let &t_EI = "\e[1 q"
+" Check if we're on WSL
+let wsl=system("grep -q Microsoft /proc/version")
+
+if strlen(wsl)
+   "...yes.
+   let &t_SI = "\e[5 q"
+   let &t_SR = "\e[3 q"
+   let &t_EI = "\e[1 q"
+end
 
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
