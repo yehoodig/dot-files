@@ -28,7 +28,8 @@
 
 
 ;;custom bits
-(load "~/.emacs.d/ks-mode/ks.el")
+(if (file-exists-p "~/.emacs.d/ks-mode/ks.el")
+  (load "~/.emacs.d/ks-mode/ks.el"))
 
 ;; Setup Evil mode
 (use-package evil
@@ -159,7 +160,16 @@
 (setq inhibit-startup-screen t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(if
+    (string-match "Microsoft"
+         (with-temp-buffer (shell-command "uname -r" t)
+                           (goto-char (point-max))
+                           (delete-char -1)
+                           (buffer-string)))
+    (message "Running under Linux subsystem for Windows")
+    ((message "Not running under Linux subsystem for Windows")
+     (add-to-list 'default-frame-alist '(fullscreen . maximized)))
+    )
 (show-paren-mode 1)
 (setq show-paren-style 'mixed)
 
