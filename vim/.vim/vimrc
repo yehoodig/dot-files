@@ -13,7 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 " My Plugins
 "Plugin 'tomvanderlee/vim-kerboscript'
 Plugin 'yump/vim-kerboscript'
-Plugin 'vimwiki/vimwiki'
+"Plugin 'vimwiki/vimwiki'
 Plugin 'scrooloose/nerdtree'
 Plugin 'itchyny/calendar.vim'
 

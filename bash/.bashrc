@@ -168,4 +168,5 @@ if grep -q Microsoft /proc/version; then
    export DISPLAY=:0
    alias ckan='ckan.exe'
    alias dosbox='/mnt/c/"Program File (x86)"/Dosbox/dosbox.exe'
+   
 fi
