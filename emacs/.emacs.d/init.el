@@ -175,9 +175,8 @@
                            (delete-char -1)
                            (buffer-string)))
     (message "Running under Linux subsystem for Windows")
-    ((message "Not running under Linux subsystem for Windows")
-     (add-to-list 'default-frame-alist '(fullscreen . maximized)))
-    )
+    (message "Not running under Linux subsystem for Windows")
+)
 ;;;;;;;;;;;;;;;;;
 ;; Appearance  ;;
 ;;;;;;;;;;;;;;;;;
