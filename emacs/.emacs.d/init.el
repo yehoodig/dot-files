@@ -41,21 +41,35 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;     Custom Evil keybindings       ;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  (define-key evil-motion-state-map (kbd "C-j") 'next-buffer)
-  (define-key evil-motion-state-map (kbd "C-k") 'previous-buffer)
-  (define-key evil-insert-state-map (kbd "C-j") 'next-buffer)
-  (define-key evil-insert-state-map (kbd "C-k") 'previous-buffer)
-  
-  ;; Fixes the above navigation, so that the cyle doesn't stick in the buffer menu
-  (define-key Buffer-menu-mode-map (kbd "C-k") 'previous-buffer)
 
+  ;; General
+  ;;;;;;;;;;
+
+  ;;Normal State
   (define-key evil-normal-state-map (kbd "C-j") 'next-buffer)
   (define-key evil-normal-state-map (kbd "C-k") 'previous-buffer)
   (define-key evil-normal-state-map (kbd "C-<return>") 'term-toggle)
+
+  ;;Insert State
+  (define-key evil-insert-state-map (kbd "C-j") 'next-buffer)
+  (define-key evil-insert-state-map (kbd "C-k") 'previous-buffer)
   (define-key evil-insert-state-map (kbd "C-<return>") 'term-toggle)
 
-  ;; For org mode
-  ;; Some of these are from evil-org-mode, but this seemed easier to implement somehow.
+  ;;Motion State
+  (define-key evil-motion-state-map (kbd "C-j") 'next-buffer)
+  (define-key evil-motion-state-map (kbd "C-k") 'previous-buffer)
+  (define-key evil-motion-state-map (kbd "C-<return>") 'term-toggle)
+  
+  ;; Specific Modes
+  ;;;;;;;;;;;;;;;;;
+
+  ;; Buffer Menu 
+  (define-key Buffer-menu-mode-map (kbd "C-k") 'previous-buffer)
+  ;;(define-key Buffer-menu-mode-map (kbd "C-<return>") 'term-toggle)
+
+  ;; Org Mode
+  ;;;;;;;;;;;
+  ;; Some of these are from evil-org-mode, but this seemed easier to implement.
   (evil-define-key 'normal org-mode-map
    (kbd "C-c") 'org-toggle-checkbox
    "H" 'org-shiftleft
@@ -154,12 +168,6 @@
 ;; Get rid of ~ file clutter, but backups are good
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
 
-;;;;;;;;;;;;;;;;;
-;; Appearance  ;;
-;;;;;;;;;;;;;;;;;
-(setq inhibit-startup-screen t)
-(menu-bar-mode -1)
-(tool-bar-mode -1)
 (if
     (string-match "Microsoft"
          (with-temp-buffer (shell-command "uname -r" t)
@@ -167,9 +175,14 @@
                            (delete-char -1)
                            (buffer-string)))
     (message "Running under Linux subsystem for Windows")
-    ((message "Not running under Linux subsystem for Windows")
-     (add-to-list 'default-frame-alist '(fullscreen . maximized)))
-    )
+    (message "Not running under Linux subsystem for Windows")
+)
+;;;;;;;;;;;;;;;;;
+;; Appearance  ;;
+;;;;;;;;;;;;;;;;;
+(setq inhibit-startup-screen t)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
 (show-paren-mode 1)
 (setq show-paren-style 'mixed)
 
