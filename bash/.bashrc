@@ -162,3 +162,17 @@ toggle-touchpad ()
 
    fi
 }
+
+# If running on Windows SL
+if grep -q Microsoft /proc/version; then
+   ## Stuff from .profile, because WSL does not run it.
+   # set PATH so it includes user's private bin if it exists
+   if [ -d "$HOME/bin" ] ; then
+      PATH="$HOME/bin:$PATH"
+   fi
+
+   export DISPLAY=:0
+   alias ckan='ckan.exe'
+   alias dosbox='/mnt/c/"Program File (x86)"/Dosbox/dosbox.exe'
+   
+fi
