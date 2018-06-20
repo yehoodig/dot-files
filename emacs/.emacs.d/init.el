@@ -237,9 +237,14 @@
   "From: https://gist.github.com/msoeken/4b2e3ee07b7252f8cb99 Toggles between terminal and current buffer (creates terminal, if none exists)"
   (interactive)
   (if (string= (buffer-name) "*ansi-term*")
-      (switch-to-buffer (other-buffer (current-buffer)))
-    (if (get-buffer "*ansi-term*")
-        (switch-to-buffer "*ansi-term*")
-      (progn
-        (ansi-term (getenv "SHELL"))
-        (setq show-trailing-whitespace nil)))))
+    (delete-window)
+    (if (get-buffer "*ansi-term*") 
+        (progn
+          (split-window-vertically)
+          (other-window 1 nil)
+          (switch-to-buffer "*ansi-term*"))
+        (progn
+          (split-window-vertically)
+          (other-window 1 nil)
+          (ansi-term (getenv "SHELL"))
+          (setq show-trailing-whitespace nil)))))
