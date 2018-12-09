@@ -4,9 +4,6 @@
 ;; Major features:
 ;;    Evil mode
 ;;     
-;; 
-
-;; 
 
 ;; Setup packages
 (require 'package)
@@ -26,12 +23,26 @@
 (eval-when-compile
   (require 'use-package))
 
+;;;;;;;;;;;;;;;;;;;;;;;
+;; Other Plugins     ;;
+;;;;;;;;;;;;;;;;;;;;;;;
+(defun fetch-plugin (name)
+  (interactive
+   (list (read-string "Name: ")))
+  (if (string= name "kos-mode")
+      (shell-command (concat "git clone https://github.com/yehoodig/ks-mode.git ~/.emacs.d")))
+  (if (string= name "arduino-mode")
+      (shell-command (concat "git clone https://github.com/bookest/arduino-mode.git ~/.emacs.d")))
+)
 
-;;custom bits
+(if (file-exists-p "~/.emacs.d/arduino-mode/arduino-mode.el")
+  (load "~/.emacs.d/arduino-mode/arduino-mode.el"))
 (if (file-exists-p "~/.emacs.d/ks-mode/ks.el")
   (load "~/.emacs.d/ks-mode/ks.el"))
 
-;; Setup Evil mode
+;;;;;;;;;;;;;;;
+;; Evil mode ;;
+;;;;;;;;;;;;;;;
 (use-package evil
   :ensure t
   :init
@@ -41,9 +52,7 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;     Custom Evil keybindings       ;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-  ;; General
-  ;;;;;;;;;;
+  ;; For neotree bindings, see that section
 
   ;;Normal State
   (define-key evil-normal-state-map (kbd "C-j") 'next-buffer)
@@ -60,6 +69,10 @@
   (define-key evil-motion-state-map (kbd "C-k") 'previous-buffer)
   (define-key evil-motion-state-map (kbd "C-<return>") 'term-toggle)
   
+  ;; Ex Commands
+  ;;;;;;;;;;;;;;;;;
+  ;;(evil-ex-define-cmd "put" :
+
   ;; Specific Modes
   ;;;;;;;;;;;;;;;;;
 
@@ -80,39 +93,11 @@
    ">" 'org-metaright
    "-" 'org-cycle-list-bullet
    "t" 'org-todo)
-  )
-
-  
-;; Other packages
-
-(use-package git
-  :ensure t
-  :init
-  :config
-;;  ;; Non-Elpa packages to load
-   ;;(if (not (file-exists-p "~/.emacs.d/ks-mode"))
-      ;;----> this is the non-working line (git-clone "https://github.com/yehoodig/ks-mode" "~/.emacs.d/")) 
 )
-(use-package magit
-  :ensure t
-  :init
-  :config
-  )
 
-(use-package powerline
-  :ensure t
-  :init
-  :config
-  (powerline-center-evil-theme))
-
-(use-package all-the-icons
-  :if window-system
-  :ensure t
-  :init
-  :config
-  )
-
-
+;;;;;;;;;;;;;
+;; Neotree ;;
+;;;;;;;;;;;;;
 (use-package neotree
   :ensure t
   :init
@@ -132,20 +117,40 @@
   ;;You may need to execute all-the-icons-install-fonts manually
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
-  ;; Neotree stuff for Evil mode
+  ;; Evil mode
   (define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
   (evil-define-key 'normal neotree-mode-map (kbd "h") 'neotree-hidden-file-toggle)
   (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-change-root)
   (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
   (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
-  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter-hide))
+  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter-hide)
+  ;; Mode specific stuff
+  (define-key Buffer-menu-mode-map (kbd "C-n") 'neotree-toggle)
+)
 
-;;;; infocom z games
-;;(use-package malyon
+
+;;;;;;;;;;;;;;;;;;;; 
+;; Other packages
+;;;;;;;;;;;;;;;;;;;;
+
+;;(use-package magit
 ;;  :ensure t
 ;;  :init
 ;;  :config
 ;;  )
+
+(use-package powerline
+  :ensure t
+  :init
+  :config
+  (powerline-center-evil-theme))
+
+(use-package all-the-icons
+  :if window-system
+  :ensure t
+  :init
+  :config
+  )
 
 (use-package linum-relative
   :ensure t
@@ -169,6 +174,8 @@
 ;;;;;;;;;;;
 
 (server-start)
+;;(setq tramp-default-methd "ssh")
+(setq tramp-copy-size-limit nil)
 
 ;; Get rid of ~ file clutter, but backups are good
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
@@ -182,6 +189,37 @@
     (message "Running under Linux subsystem for Windows")
     (message "Not running under Linux subsystem for Windows")
 )
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+;; Custom functions   ;;
+;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun edit-dot (name)
+  (interactive
+   (list (read-string "Name: ")))
+  (if (string= name "bash")
+      (find-file "~/.bashrc"))
+  (if (string= name "vim")
+      (find-file "~/.vim/vimrc"))
+  (if (string= name "emacs")
+      (find-file "~/.emacs.d/init.el")))
+
+(defun term-toggle ()
+  "From: https://gist.github.com/msoeken/4b2e3ee07b7252f8cb99 Toggles between terminal and current buffer (creates terminal, if none exists)"
+  (interactive)
+  (if (string= (buffer-name) "*ansi-term*")
+    (delete-window)
+    (if (get-buffer "*ansi-term*") 
+        (progn
+          (split-window-horizontally)
+          (other-window 1 nil)
+          (switch-to-buffer "*ansi-term*"))
+        (progn
+          (split-window-horizontally)
+          (other-window 1 nil)
+          (ansi-term (getenv "SHELL"))
+          (setq show-trailing-whitespace nil)))))
+
 ;;;;;;;;;;;;;;;;;
 ;; Appearance  ;;
 ;;;;;;;;;;;;;;;;;
@@ -214,7 +252,17 @@
      (other . "gnu"))))
  '(c-echo-syntactic-information-p nil)
  '(c-syntactic-indentation t)
- '(custom-enabled-themes (quote (deeper-blue))))
+ '(custom-enabled-themes (quote (deeper-blue)))
+ '(speedbar-default-position (quote left))
+ '(speedbar-frame-parameters
+   (quote
+    ((minibuff:er)
+     (width . 10)
+     (border-width . 0)
+     (menu-bar-lines . 0)
+     (tool-bar-lines . 0)
+     (unsplittable . t)
+     (left-fringe . 0)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -222,29 +270,3 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; Custom functions
-(defun edit-dot (name)
-  (interactive
-   (list (read-string "Name: ")))
-  (if (string= name "bash")
-      (find-file "~/.bashrc"))
-  (if (string= name "vim")
-      (find-file "~/.vim/vimrc"))
-  (if (string= name "emacs")
-      (find-file "~/.emacs.d/init.el")))
-
-(defun term-toggle ()
-  "From: https://gist.github.com/msoeken/4b2e3ee07b7252f8cb99 Toggles between terminal and current buffer (creates terminal, if none exists)"
-  (interactive)
-  (if (string= (buffer-name) "*ansi-term*")
-    (delete-window)
-    (if (get-buffer "*ansi-term*") 
-        (progn
-          (split-window-vertically)
-          (other-window 1 nil)
-          (switch-to-buffer "*ansi-term*"))
-        (progn
-          (split-window-vertically)
-          (other-window 1 nil)
-          (ansi-term (getenv "SHELL"))
-          (setq show-trailing-whitespace nil)))))
