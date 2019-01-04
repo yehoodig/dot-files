@@ -26,19 +26,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; Other Plugins     ;;
 ;;;;;;;;;;;;;;;;;;;;;;;
-(defun fetch-plugin (name)
-  (interactive
-   (list (read-string "Name: ")))
-  (if (string= name "kos-mode")
-      (shell-command (concat "git clone https://github.com/yehoodig/ks-mode.git ~/.emacs.d")))
-  (if (string= name "arduino-mode")
-      (shell-command (concat "git clone https://github.com/bookest/arduino-mode.git ~/.emacs.d")))
-)
-
 (if (file-exists-p "~/.emacs.d/arduino-mode/arduino-mode.el")
-  (load "~/.emacs.d/arduino-mode/arduino-mode.el"))
+    (load "~/.emacs.d/arduino-mode/arduino-mode.el")
+  (progn
+    (shell-command (concat "git clone https://github.com/bookest/arduino-mode.git ~/.emacs.d/arduino-mode"))
+    (load "~/.emacs.d/arduino-mode/arduino-mode.el")))
+
 (if (file-exists-p "~/.emacs.d/ks-mode/ks.el")
-  (load "~/.emacs.d/ks-mode/ks.el"))
+    (load "~/.emacs.d/ks-mode/ks.el")
+  (progn
+    (shell-command (concat "git clone https://github.com/yehoodig/ks-mode.git ~/.emacs.d/ks-mode"))
+    (load "~/.emacs.d/ks-mode/ks.el")))
 
 ;;;;;;;;;;;;;;;
 ;; Evil mode ;;
@@ -128,7 +126,6 @@
   (define-key Buffer-menu-mode-map (kbd "C-n") 'neotree-toggle)
 )
 
-
 ;;;;;;;;;;;;;;;;;;;; 
 ;; Other packages
 ;;;;;;;;;;;;;;;;;;;;
@@ -174,21 +171,11 @@
 ;;;;;;;;;;;
 
 (server-start)
-;;(setq tramp-default-methd "ssh")
+(setq tramp-default-method "ssh")
 (setq tramp-copy-size-limit nil)
 
 ;; Get rid of ~ file clutter, but backups are good
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
-
-(if
-    (string-match "Microsoft"
-         (with-temp-buffer (shell-command "uname -r" t)
-                           (goto-char (point-max))
-                           (delete-char -1)
-                           (buffer-string)))
-    (message "Running under Linux subsystem for Windows")
-    (message "Not running under Linux subsystem for Windows")
-)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Custom functions   ;;
@@ -223,6 +210,28 @@
 ;;;;;;;;;;;;;;;;;
 ;; Appearance  ;;
 ;;;;;;;;;;;;;;;;;
+(if
+    (and (display-graphic-p) (string-match "Microsoft"
+         (with-temp-buffer (shell-command "uname -r" t)
+                           (goto-char (point-max))
+                           (delete-char -1)
+                           (buffer-string))))
+    (progn
+      (message "Running under Linux subsystem for Windows")
+      (setq initial-frame-alist '(
+                                  (width . 106)
+                                  (height . 40)
+                                  (left . 50)
+                                  (top . 50)))
+      (setq default-frame-alist '(
+                                  (width . 106)
+                                  (height . 40)
+                                  (left . 50)
+                                  (top . 50)))
+    )
+    (message "Not running under Linux subsystem for Windows")
+)
+
 (setq inhibit-startup-screen t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -253,6 +262,9 @@
  '(c-echo-syntactic-information-p nil)
  '(c-syntactic-indentation t)
  '(custom-enabled-themes (quote (deeper-blue)))
+ '(package-selected-packages
+   (quote
+    (linum-relative all-the-icons powerline neotree evil use-package)))
  '(speedbar-default-position (quote left))
  '(speedbar-frame-parameters
    (quote
