@@ -112,8 +112,18 @@
     (interactive "P")
     (neo-buffer--execute arg 'neo-open-file-hide 'neo-open-dir))
    
+  ;;Fancy Icons
   ;;You may need to execute all-the-icons-install-fonts manually
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
+  ;;window width
+  ;;from: https://github.com/jaypei/emacs-neotree/issues/262
+  (eval-after-load "neotree"
+    '(add-to-list 'window-size-change-functions
+                  (lambda (frame)
+                    (let ((neo-window (neo-global--get-window)))
+                      (unless (null neo-window)
+                        (setq neo-window-width (window-width neo-window)))))))
 
   ;; Evil mode
   (define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
@@ -218,14 +228,15 @@
                            (buffer-string))))
     (progn
       (message "Running under Linux subsystem for Windows")
+      (cd "~/")
       (setq initial-frame-alist '(
-                                  (width . 106)
-                                  (height . 40)
+                                  (width . 156)
+                                  (height . 45)
                                   (left . 50)
                                   (top . 50)))
       (setq default-frame-alist '(
-                                  (width . 106)
-                                  (height . 40)
+                                  (width . 156)
+                                  (height . 45)
                                   (left . 50)
                                   (top . 50)))
     )
