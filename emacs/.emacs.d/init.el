@@ -208,11 +208,11 @@
     (delete-window)
     (if (get-buffer "*ansi-term*") 
         (progn
-          (split-window-horizontally)
+          (split-window-vertically)
           (other-window 1 nil)
           (switch-to-buffer "*ansi-term*"))
         (progn
-          (split-window-horizontally)
+          (split-window-vertically)
           (other-window 1 nil)
           (ansi-term (getenv "SHELL"))
           (setq show-trailing-whitespace nil)))))
