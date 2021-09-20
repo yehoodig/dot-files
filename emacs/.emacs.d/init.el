@@ -337,6 +337,12 @@
         (progn
           (split-window-vertically)
           (other-window 1 nil)
+          (if (string= window-system "x")
+              (progn
+                (setenv "PATH"
+                        (concat
+                         "$HOME/.local/bin" ":"
+                         (getenv "PATH")))))
           (eshell)
           ;;(ansi-term (getenv "SHELL"))
           (setq show-trailing-whitespace nil)))))
