@@ -1,7 +1,0 @@
-[user]
-	name = yehoodig
-	email = yehoodig@gmail.com
-[push]
-	default = simple
-[core]
-	editor = emacsclient -a emacs
