@@ -297,10 +297,9 @@
      (linum-relative-mode 0))))
 
 ;;;;;;;;;;;
-;; MISC  ;;
+;; Misc  ;;
 ;;;;;;;;;;;
 
-(server-start)
 (setq tramp-default-method "ssh")
 (setq tramp-copy-size-limit nil)
 
@@ -426,3 +425,10 @@
  ;; If there is more than one, they won't work right.
  )
 
+
+;;;;;;;;;;;;;
+;; Startup ;;
+;;;;;;;;;;;;;
+(setq initial-buffer-choice "~/.emacs.d/today.org")
+(setq diary-file "~/.emacs.d/diary")
+(server-start)
