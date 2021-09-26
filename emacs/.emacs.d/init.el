@@ -38,6 +38,47 @@
     (shell-command (concat "git clone https://github.com/yehoodig/ks-mode.git ~/.emacs.d/ks-mode"))
     (load "~/.emacs.d/ks-mode/ks.el")))
 
+;;;;;;;;;;;;;;;;;;;; 
+;; Other packages ;;
+;;;;;;;;;;;;;;;;;;;;
+
+(use-package magit
+  :after evil
+  :ensure t
+  :init
+  :config
+)
+
+(use-package powerline
+  :ensure t
+  :init
+  :config
+  (powerline-center-evil-theme))
+
+(use-package all-the-icons
+  :if window-system
+  :ensure t
+  :init
+  :config
+  )
+
+(use-package linum-relative
+  :ensure t
+  :init
+  :config
+  ;; Relative line numbers
+  (linum-relative-mode)
+
+  ;; In relative mode, current line is absolute number, not 0.
+  (setq linum-relative-current-symbol "")
+
+  ;; Per mode line numbering behaviour 
+  (add-hook 'prog-mode-hook 'linum-relative-mode 1)
+  (add-hook 'ks-mode-hook 'linum-relative-mode 1)
+  (add-hook 'term-mode-hook (lambda ()
+     (linum-mode 0)
+     (linum-relative-mode 0))))
+
 ;;;;;;;;;;;;;;;
 ;; Evil mode ;;
 ;;;;;;;;;;;;;;;
@@ -48,6 +89,7 @@
   (setq-default evil-shift-width 3)
   :config
   (evil-mode 1)
+  (add-hook 'magit-mode-hook 'evil-normal-state)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;     Custom Evil keybindings       ;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -94,13 +136,12 @@
    "t" 'org-todo)
 )
 
-(use-package evil-collection
-  :after evil
-  :ensure t
-  :init
-  :config
-  :custom
-  (evil-collection-init))
+;; Not sure how this works/not working for me atm.
+;;(use-package evil-collection
+;;  :after evil
+;;  :ensure t
+;;  :custom 
+;;  :init (evil-collection-init))
 
 ;;;;;;;;;;;;;
 ;; Neotree ;;
@@ -223,8 +264,8 @@
     )
   :bind
   (:map global-map
-        ("M-0"       . treemacs-select-window)
-        ("C-x t 1"   . treemacs-delete-other-windows)
+        ;;("M-0"       . treemacs-select-window) ;
+        ;; ("C-x t 1"   . treemacs-delete-other-windows)
         ("C-x t t"   . treemacs)
         ("C-x t B"   . treemacs-bookmark)
         ("C-x t C-t" . treemacs-find-file)
@@ -232,7 +273,7 @@
    :map evil-normal-state-map
         ("C-;" . treemacs)
    :map treemacs-mode-map
-        ("C-;" . treemacs)))
+        ("C-;" . treemacs)))           
       
 (use-package treemacs-evil
   :after (treemacs evil)
@@ -255,46 +296,6 @@
 ;;  :after (treemacs persp-mode) ;;or perspective vs. persp-mode
 ;;  :ensure t
 ;;  :config (treemacs-set-scope-type 'Perspectives))
-
-;;;;;;;;;;;;;;;;;;;; 
-;; Other packages
-;;;;;;;;;;;;;;;;;;;;
-
-(use-package magit
-  :ensure t
-  :init
-  :config
-  )
-
-(use-package powerline
-  :ensure t
-  :init
-  :config
-  (powerline-center-evil-theme))
-
-(use-package all-the-icons
-  :if window-system
-  :ensure t
-  :init
-  :config
-  )
-
-(use-package linum-relative
-  :ensure t
-  :init
-  :config
-  ;; Relative line numbers
-  (linum-relative-mode)
-
-  ;; In relative mode, current line is absolute number, not 0.
-  (setq linum-relative-current-symbol "")
-
-  ;; Per mode line numbering behaviour 
-  (add-hook 'prog-mode-hook 'linum-relative-mode 1)
-  (add-hook 'ks-mode-hook 'linum-relative-mode 1)
-  (add-hook 'term-mode-hook (lambda ()
-     (linum-mode 0)
-     (linum-relative-mode 0))))
 
 ;;;;;;;;;;;
 ;; Misc  ;;

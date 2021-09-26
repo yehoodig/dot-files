@@ -16,6 +16,9 @@ Plugin 'yump/vim-kerboscript'
 "Plugin 'vimwiki/vimwiki'
 Plugin 'scrooloose/nerdtree'
 Plugin 'itchyny/calendar.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'jreybert/vimagit'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
