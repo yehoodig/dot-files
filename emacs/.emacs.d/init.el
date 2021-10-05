@@ -98,17 +98,17 @@
   ;;Normal State
   (define-key evil-normal-state-map (kbd "M-j") 'next-buffer)
   (define-key evil-normal-state-map (kbd "M-k") 'previous-buffer)
-  (define-key evil-normal-state-map (kbd "M-<return>") 'term-toggle)
+  (define-key evil-normal-state-map (kbd "C-<return>") 'term-toggle)
 
   ;;Insert State
   (define-key evil-insert-state-map (kbd "M-j") 'next-buffer)
   (define-key evil-insert-state-map (kbd "M-k") 'previous-buffer)
-  (define-key evil-insert-state-map (kbd "M-<return>") 'term-toggle)
+  (define-key evil-insert-state-map (kbd "C-<return>") 'term-toggle)
 
   ;;Motion State
   (define-key evil-motion-state-map (kbd "M-j") 'next-buffer)
   (define-key evil-motion-state-map (kbd "M-k") 'previous-buffer)
-  (define-key evil-motion-state-map (kbd "M-<return>") 'term-toggle)
+  (define-key evil-motion-state-map (kbd "C-<return>") 'term-toggle)
   
   ;; Ex Commands
   ;;;;;;;;;;;;;;;;;
@@ -119,6 +119,8 @@
   ;; Buffer Menu 
   (define-key Buffer-menu-mode-map (kbd "M-j") 'next-buffer)
   (define-key Buffer-menu-mode-map (kbd "M-k") 'previous-buffer)
+  (define-key Buffer-menu-mode-map (kbd "k") 'evil-previous-line)
+  (define-key Buffer-menu-mode-map (kbd "h") 'evil-backward-char)
   ;;(define-key Buffer-menu-mode-map (kbd "C-<return>") 'term-toggle)
 
   ;; Org Mode
@@ -230,7 +232,7 @@
           treemacs-recenter-after-project-expand   'on-distance
           treemacs-litter-directories              '("/node_modules" "/.venv" "/.cask")
           treemacs-show-cursor                     nil
-          treemacs-show-hidden-files               t
+          treemacs-show-hidden-files               nil
           treemacs-silent-filewatch                nil
           treemacs-silent-refresh                  nil
           treemacs-sorting                         'alphabetic-asc
