@@ -400,27 +400,21 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(c-default-style
-   (quote
-    ((java-mode . "java")
-     (awk-mode . "awk")
-     (other . "gnu"))))
+ '(c-default-style '((java-mode . "java") (awk-mode . "awk") (other . "gnu")))
  '(c-echo-syntactic-information-p nil)
  '(c-syntactic-indentation t)
- '(custom-enabled-themes (quote (deeper-blue)))
+ '(custom-enabled-themes '(deeper-blue))
  '(package-selected-packages
-   (quote
-    (linum-relative all-the-icons powerline neotree evil use-package)))
- '(speedbar-default-position (quote left))
+   '(linum-relative all-the-icons powerline neotree evil use-package))
+ '(speedbar-default-position 'left)
  '(speedbar-frame-parameters
-   (quote
-    ((minibuff:er)
+   '((minibuff:er)
      (width . 10)
      (border-width . 0)
      (menu-bar-lines . 0)
      (tool-bar-lines . 0)
      (unsplittable . t)
-     (left-fringe . 0)))))
+     (left-fringe . 0))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -432,6 +426,6 @@
 ;;;;;;;;;;;;;
 ;; Startup ;;
 ;;;;;;;;;;;;;
-(setq initial-buffer-choice "~/.emacs.d/today.org")
+(setq initial-buffer-choice (concat "~/Documents/Daily/" (format-time-string "%d%b%Y" (current-time)) ".org"))
 (setq diary-file "~/.emacs.d/diary")
 (server-start)

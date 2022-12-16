@@ -112,6 +112,7 @@ if strlen(wsl)
    let &t_SR = "\e[3 q"
    let &t_EI = "\e[1 q"
 end
+set t_u7 = 
 
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
