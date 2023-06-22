@@ -273,9 +273,9 @@
         ("C-x t C-t" . treemacs-find-file)
         ("C-x t M-t" . treemacs-find-tag)
    :map evil-normal-state-map
-        ("C-;" . treemacs)
+        ("C-n" . treemacs)
    :map treemacs-mode-map
-        ("C-;" . treemacs)))           
+        ("C-n" . treemacs)))           
       
 (use-package treemacs-evil
   :after (treemacs evil)
@@ -314,6 +314,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun edit-dot (name)
+  "Shortcut to edit dot files"
   (interactive
    (list (read-string "Name: ")))
   (if (string= name "bash")
@@ -382,7 +383,8 @@
 (setq show-paren-style 'mixed)
 
 ;; Framesize
-(when window-system (set-frame-size (selected-frame) (floor (* (display-pixel-width) 0.75)) (floor (* (display-pixel-height) 0.75))))
+; Breaks in WSL2/wslg
+;(when window-system (set-frame-size (selected-frame) (floor (* (display-pixel-width) 0.75)) (floor (* (display-pixel-height) 0.75))))
 
 ;; Word Wrapping
 (global-visual-line-mode t)
@@ -416,16 +418,25 @@
      (unsplittable . t)
      (left-fringe . 0))))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+;; custom-set-faces was added by Custom.
+;; If you edit it by hand, you could mess it up, so be careful.
+;; Your init file should contain only one such instance.
+;; If there is more than one, they won't work right.
  )
 
 
 ;;;;;;;;;;;;;
 ;; Startup ;;
 ;;;;;;;;;;;;;
-(setq initial-buffer-choice (concat "~/Documents/Daily/" (format-time-string "%d%b%Y" (current-time)) ".org"))
+;(setq initial-buffer-choice (concat "~/Documents/Daily/" (format-time-string "%d%b%Y" (current-time)) ".org"))
+;; (if (file-exists-p (concat "~/Documents/Daily/" (format-time-string "%d%b%Y" (current-time)) ".org"))
+;;           (concat "~/Documents/Daily/" (format-time-string "%d%b%Y" (current-time)) ".org")
+;;           "~/Documents/Daily/welcome.md")
+(setq initial-buffer-choice
+      (if (file-exists-p (concat "~/Documents/Daily/" (format-time-string "%d%b%Y" (current-time)) ".md"))
+          (concat "~/Documents/Daily/" (format-time-string "%d%b%Y" (current-time)) ".md")
+          (insert-file-contents "~/Documents/Daily/welcome.md")))
+(setq major-mode 'org-mode)
+
 (setq diary-file "~/.emacs.d/diary")
 (server-start)
